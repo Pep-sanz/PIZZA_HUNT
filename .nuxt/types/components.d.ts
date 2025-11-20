@@ -19,6 +19,7 @@ interface _GlobalComponents {
   'BaseInput': typeof import("../../components/base/BaseInput.vue")['default']
   'LayoutAppFooter': typeof import("../../components/layout/AppFooter.vue")['default']
   'LayoutAppHeader': typeof import("../../components/layout/AppHeader.vue")['default']
+  'MenuPizzaCard': typeof import("../../components/menu/PizzaCard.vue")['default']
   'NuxtWelcome': typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   'NuxtLayout': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   'NuxtErrorBoundary': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -47,6 +48,7 @@ interface _GlobalComponents {
   'LazyBaseInput': LazyComponent<typeof import("../../components/base/BaseInput.vue")['default']>
   'LazyLayoutAppFooter': LazyComponent<typeof import("../../components/layout/AppFooter.vue")['default']>
   'LazyLayoutAppHeader': LazyComponent<typeof import("../../components/layout/AppHeader.vue")['default']>
+  'LazyMenuPizzaCard': LazyComponent<typeof import("../../components/menu/PizzaCard.vue")['default']>
   'LazyNuxtWelcome': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   'LazyNuxtLayout': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   'LazyNuxtErrorBoundary': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

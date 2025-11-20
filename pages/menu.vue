@@ -13,12 +13,24 @@ await useAsyncData("pizzas-gallery", async () => {
   return menuStore.items;
 });
 
+const activeCategory = ref("All");
+const searchTerm = ref("");
 const selectedItem = ref<null | PizzaItem>(null);
-const selectedInstructions = computed(() =>
-  selectedItem.value?.instructions || selectedItem.value?.description || ""
-);
 
-const galleryItems = computed(() => menuStore.items);
+const categories = computed(() => menuStore.categories);
+
+const galleryItems = computed(() => {
+  const query = searchTerm.value.trim().toLowerCase();
+  return menuStore.items.filter((item) => {
+    const matchesCategory =
+      activeCategory.value === "All" || item.category === activeCategory.value;
+    const matchesQuery =
+      !query ||
+      item.title.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query);
+    return matchesCategory && matchesQuery;
+  });
+});
 
 const openModal = (item: PizzaItem) => {
   selectedItem.value = item;
@@ -57,13 +69,32 @@ const formatPrice = (value: number) =>
     </div>
   </section>
 
+  <section class="filters">
+    <BaseInput
+      v-model="searchTerm"
+      label="Search pizzas"
+      placeholder="Search by name or ingredient"
+    />
+    <div class="filter-row">
+      <button
+        v-for="category in categories"
+        :key="category"
+        class="btn btn--ghost"
+        :class="{ active: activeCategory === category }"
+        @click="activeCategory = category"
+      >
+        {{ category }}
+      </button>
+    </div>
+  </section>
+
   <section>
     <div v-if="menuStore.loading" class="empty-state">Loading pizzas...</div>
     <div v-else-if="menuStore.error" class="empty-state">
       {{ menuStore.error }}
     </div>
     <div v-else-if="galleryItems.length === 0" class="empty-state">
-      No pizzas available right now.
+      No pizzas match your filters. Try a different search.
     </div>
     <div v-else class="gallery-grid">
       <PizzaCard
@@ -92,10 +123,6 @@ const formatPrice = (value: number) =>
         </div>
         <h2>{{ selectedItem.title }}</h2>
         <p>{{ selectedItem.description }}</p>
-        <p class="recipe-heading">Recipe</p>
-        <p class="recipe-text">
-          {{ selectedInstructions }}
-        </p>
         <p class="badge" style="margin-bottom: 0.5rem">
           {{ selectedItem.category }}
         </p>

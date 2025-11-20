@@ -649,7 +649,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "spoonacularKey": ""
+    "spoonacularKey": "b05c6a2be5ce4e04bbc448c6cef3126f"
   }
 };
 const envOptions = {

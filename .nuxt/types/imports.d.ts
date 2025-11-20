@@ -9,6 +9,7 @@ declare global {
   const clearError: typeof import('../../node_modules/nuxt/dist/app/composables/error').clearError
   const clearNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').clearNuxtData
   const clearNuxtState: typeof import('../../node_modules/nuxt/dist/app/composables/state').clearNuxtState
+  const collapseText: typeof import('../../utils/text').collapseText
   const computed: typeof import('../../node_modules/vue').computed
   const createError: typeof import('../../node_modules/nuxt/dist/app/composables/error').createError
   const customRef: typeof import('../../node_modules/vue').customRef
@@ -199,6 +200,7 @@ declare module 'vue' {
     readonly clearError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['clearError']>
     readonly clearNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']>
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
+    readonly collapseText: UnwrapRef<typeof import('../../utils/text')['collapseText']>
     readonly computed: UnwrapRef<typeof import('../../node_modules/vue')['computed']>
     readonly createError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['createError']>
     readonly customRef: UnwrapRef<typeof import('../../node_modules/vue')['customRef']>
